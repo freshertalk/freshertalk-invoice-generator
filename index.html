@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FresherTalk Invoice Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="freshtalk-logo.png" alt="FresherTalk Logo" class="logo animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__slideInDown">FresherTalk Digital Solutions</h1>
+        <h2>Invoice Generator</h2>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Invoice Generation Form -->
+        <section class="card animate__animated animate__fadeInUp">
+            <h3>Generate New Invoice</h3>
+            <form id="invoice-form">
+                <div class="input-group">
+                    <label for="client-name">Client Name</label>
+                    <input type="text" id="client-name" placeholder="Enter client name" required>
+                </div>
+                <div class="input-group">
+                    <label for="client-mobile">Mobile Number</label>
+                    <input type="tel" id="client-mobile" placeholder="Enter mobile number" required>
+                </div>
+                <div class="input-group">
+                    <label for="client-address">Address</label>
+                    <textarea id="client-address" placeholder="Enter client address" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="invoice-date">Invoice Date</label>
+                    <input type="date" id="invoice-date" required>
+                </div>
+                <div class="input-group">
+                    <label for="payment-type">Payment Type</label>
+                    <select id="payment-type" required>
+                        <option value="Cash">Cash</option>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <div id="items-container">
+                    <div class="item-row">
+                        <input type="text" class="item-name" placeholder="Item Name" required>
+                        <input type="text" class="item-hsn" placeholder="HSN/SAC" required>
+                        <input type="number" class="item-quantity" placeholder="Qty" min="1" required>
+                        <input type="number" class="item-rate" placeholder="Rate" min="0" step="0.01" required>
+                        <input type="number" class="item-tax" placeholder="Tax %" min="0" max="100" step="0.01"
+                            required>
+                        <button type="button" class="remove-item">Remove</button>
+                    </div>
+                </div>
+                <button type="button" id="add-item">Add Item</button>
+                <button type="submit" class="generate-button">Generate Invoice</button>
+            </form>
+        </section>
+
+        <!-- Invoice Preview -->
+        <section class="card hidden" id="invoice-preview">
+            <h3>Invoice Preview</h3>
+            <div id="preview-content"></div>
+            <button id="download-pdf">Download PDF</button>
+        </section>
+
+        <!-- Previous Invoices -->
+        <section class="card">
+            <h3>Previous Invoices</h3>
+            <table id="invoices-table">
+                <thead>
+                    <tr>
+                        <th>Invoice ID</th>
+                        <th>Client Name</th>
+                        <th>Date</th>
+                        <th>Total Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Registered Address: Aurangabad, Ghazipur, 233001, Uttar Pradesh, India</p>
+            <p>Registration No.: UPSA66715491 | MSME URN: UDYAM-UP-30-0037331</p>
+            <p>GSTIN: 09BMEPT8758F1ZD</p>
+            <p>Recognized by AICTE, New Delhi for offering internships</p>
+            <p>Email: <a href="mailto:campus@freshtalk.in">campus@freshtalk.in</a></p>
+            <p>Phone: <a href="tel:+919535039501">+91-95350 39501</a></p>
+            <p>Website: <a href="https://freshtalk.in" target="_blank">https://freshtalk.in</a></p>
+            <p>© 2025 FresherTalk Digital Solutions. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
